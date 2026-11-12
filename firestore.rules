@@ -1,0 +1,79 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Super-Admin verification logic: victorlaraujo@gmail.com has full deletion privileges
+    function isSuperAdmin() {
+      return request.auth != null && (
+        request.auth.token.email.lower() == 'victorlaraujo@gmail.com' ||
+        request.auth.token.role == 'super-admin'
+      );
+    }
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSuperAdmin() || (isAuthenticated() && request.auth.token.role == 'admin');
+    }
+
+    function isNutritionist() {
+      return isAdmin() || (isAuthenticated() && request.auth.token.role == 'nutritionist');
+    }
+
+    // Master Access: Super-Admin has full database deletion rights across any path
+    match /{document=**} {
+      allow read: if isAuthenticated();
+      allow delete: if isSuperAdmin();
+    }
+
+    // Specific entity policies
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isAuthenticated() && (request.auth.uid == userId || isSuperAdmin());
+      allow delete: if isSuperAdmin();
+    }
+
+    match /nutritionists/{nutritionistId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isAdmin();
+      allow delete: if isSuperAdmin();
+    }
+
+    match /patients/{patientId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isNutritionist();
+      allow delete: if isSuperAdmin() || (isNutritionist() && resource.data.nutritionistId == request.auth.uid);
+    }
+
+    match /anthropometry/{recordId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isNutritionist();
+      allow delete: if isSuperAdmin() || isNutritionist();
+    }
+
+    match /dietPlans/{planId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isNutritionist();
+      allow delete: if isSuperAdmin() || isNutritionist();
+    }
+
+    match /dietTemplates/{templateId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isNutritionist();
+      allow delete: if isSuperAdmin() || isNutritionist();
+    }
+
+    match /foodSubstitutionGroups/{groupId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isNutritionist();
+      allow delete: if isSuperAdmin() || isNutritionist();
+    }
+
+    match /payments/{paymentId} {
+      allow read: if isAuthenticated();
+      allow create, update: if isAdmin();
+      allow delete: if isSuperAdmin();
+    }
+  }
+}

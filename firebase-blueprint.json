@@ -1,0 +1,78 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role authentication and permissions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "name": { "type": "string" },
+        "role": {
+          "type": "string",
+          "enum": ["super-admin", "admin", "nutritionist", "patient"]
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "email", "role"]
+    },
+    "Nutritionist": {
+      "title": "Nutritionist",
+      "description": "Clinical nutritionist practitioner",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "crn": { "type": "string" },
+        "role": { "type": "string", "enum": ["nutritionist", "admin"] }
+      },
+      "required": ["id", "name", "email", "crn"]
+    },
+    "Patient": {
+      "title": "Patient",
+      "description": "Clinical patient profile and health records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nutritionistId": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "gender": { "type": "string", "enum": ["Masculino", "Feminino"] }
+      },
+      "required": ["id", "name", "email"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "Financial charge and transaction record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patientId": { "type": "string" },
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "completed", "failed", "refunded"] }
+      },
+      "required": ["id", "patientId", "amount", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "#/entities/User",
+      "description": "User profiles and permission assignments"
+    },
+    "/nutritionists/{nutritionistId}": {
+      "schema": "#/entities/Nutritionist",
+      "description": "Clinic nutritionist accounts"
+    },
+    "/patients/{patientId}": {
+      "schema": "#/entities/Patient",
+      "description": "Patient clinical files"
+    },
+    "/payments/{paymentId}": {
+      "schema": "#/entities/Payment",
+      "description": "Billing and PIX transactions"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "NutriCore Pro - Sistema de Gestão Nutricional",
+  "description": "Sistema completo de gestão nutricional com cálculo de TMB/VET, antropometria Pollock 7 dobras, planejador inteligente com tabela TACO/IBGE e portal do paciente.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

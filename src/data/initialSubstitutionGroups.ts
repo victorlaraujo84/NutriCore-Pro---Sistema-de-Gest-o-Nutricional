@@ -1,0 +1,400 @@
+import { FoodSubstitutionGroup } from '../types';
+
+export const INITIAL_FOOD_SUBSTITUTION_GROUPS: FoodSubstitutionGroup[] = [
+  {
+    id: 'grp-sub-ovo-desjejum',
+    name: 'Substitutos do Ovo de Galinha (Desjejum & Lanches)',
+    category: 'Proteínas',
+    description: 'Regra de equivalência para cada 1 ovo de galinha inteiro (~50g, 72 kcal, 6.7g proteína): trocar por 1 fatia de tofu grelhado, 35g de queijo minas, 30g de frango desfiado ou 35g de atum.',
+    referenceFood: {
+      foodId: 'food-egg-01',
+      name: 'Ovo de galinha cozido / mexido',
+      amountG: 50,
+      measureLabel: '1 unidade média (50g)',
+      calories: 72,
+      protein: 6.7,
+      carbs: 0.3,
+      fats: 4.8
+    },
+    applicableKeywords: ['ovo', 'ovos', 'clara', 'omelete'],
+    createdAt: '2026-08-01T10:00:00.000Z',
+    updatedAt: '2026-09-11T10:00:00.000Z',
+    authorNutritionistName: 'Dr. Ricardo Silva',
+    substitutions: [
+      {
+        foodId: 'food-prot-09',
+        name: 'Tofu firme grelhado com cúrcuma',
+        amountG: 70,
+        measureLabel: '1 fatia média (~70g)',
+        calories: 53,
+        protein: 5.6,
+        carbs: 1.4,
+        fats: 3.4,
+        fiber: 0.8,
+        tip: 'Opção 100% vegetal/vegana com textura similar a ovos mexidos e rica em isoflavonas.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-dairy-05',
+        name: 'Queijo Minas Frescal tradicional',
+        amountG: 35,
+        measureLabel: '1 fatia média (~35g)',
+        calories: 92,
+        protein: 6.1,
+        carbs: 1.1,
+        fats: 7.0,
+        fiber: 0,
+        tip: 'Excelente alternativa láctea rica em cálcio biodisponível e caseína de digestão lenta.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-prot-01',
+        name: 'Peito de Frango cozido e desfiado',
+        amountG: 30,
+        measureLabel: '2 colheres de sopa rasas (~30g)',
+        calories: 48,
+        protein: 9.6,
+        carbs: 0.0,
+        fats: 0.8,
+        fiber: 0,
+        tip: 'Opção salgada muito magra com alto índice de saciedade e zero carboidratos.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-prot-07',
+        name: 'Atum sólido ao natural (em água)',
+        amountG: 35,
+        measureLabel: '1/4 de lata (~35g)',
+        calories: 40,
+        protein: 9.1,
+        carbs: 0.0,
+        fats: 0.3,
+        fiber: 0,
+        tip: 'Opção sem ovos super prática, rica em ácidos graxos ômega-3 e fósforo.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-dairy-03',
+        name: 'Queijo Cottage LacFree / Light',
+        amountG: 50,
+        measureLabel: '2 colheres de sopa cheias (~50g)',
+        calories: 49,
+        protein: 6.2,
+        carbs: 1.7,
+        fats: 1.8,
+        fiber: 0,
+        tip: 'Altíssima digestibilidade, baixo teor de gordura saturada e rico em aminoácidos.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-veg-hummus',
+        name: 'Pasta de Grão-de-Bico (Homus)',
+        amountG: 40,
+        measureLabel: '2 colheres de sopa (~40g)',
+        calories: 66,
+        protein: 3.2,
+        carbs: 5.8,
+        fats: 3.8,
+        fiber: 2.1,
+        tip: 'Alternativa 100% vegetal com fibras prebióticas para saúde intestinal.',
+        portionMultiplier: 1
+      }
+    ]
+  },
+  {
+    id: 'grp-sub-carbo-almoco',
+    name: 'Fontes de Carboidratos Cozidos (Almoço & Jantar)',
+    category: 'Carboidratos & Grãos',
+    description: 'Equivalência para 100g de Arroz Branco Cozido (~128 kcal, 28g carboidrato): trocar por batata-doce, aipim/mandioca, quinoa ou batata inglesa mantendo densidade energética balanceada.',
+    referenceFood: {
+      foodId: 'food-carb-01',
+      name: 'Arroz Branco cozido',
+      amountG: 100,
+      measureLabel: '100g (~3 colheres de sopa cheias)',
+      calories: 128,
+      protein: 2.5,
+      carbs: 28.1,
+      fats: 0.2
+    },
+    applicableKeywords: ['arroz', 'batata', 'mandioca', 'aipim', 'quinoa', 'macarrao'],
+    createdAt: '2026-08-01T10:00:00.000Z',
+    updatedAt: '2026-09-11T10:00:00.000Z',
+    authorNutritionistName: 'Dr. Ricardo Silva',
+    substitutions: [
+      {
+        foodId: 'food-carb-02',
+        name: 'Arroz Integral cozido',
+        amountG: 100,
+        measureLabel: '100g (~3 colheres de sopa)',
+        calories: 124,
+        protein: 2.6,
+        carbs: 25.8,
+        fats: 1.0,
+        fiber: 2.7,
+        tip: 'Maior densidade de fibras insolúveis e micronutrientes do complexo B.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-carb-05',
+        name: 'Batata Doce cozida',
+        amountG: 120,
+        measureLabel: '120g (~1 unidade pequena)',
+        calories: 92,
+        protein: 0.7,
+        carbs: 22.1,
+        fats: 0.1,
+        fiber: 2.2,
+        tip: 'Baixo índice glicêmico com liberação sustentada de glicose e rica em betacaroteno.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-carb-07',
+        name: 'Mandioca / Aipim cozido',
+        amountG: 80,
+        measureLabel: '80g (~1 pedaço médio)',
+        calories: 100,
+        protein: 0.5,
+        carbs: 24.1,
+        fats: 0.2,
+        fiber: 1.5,
+        tip: 'Carboidrato de excelente digestibilidade e sem resíduos irritativos para o intestino.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-carb-04',
+        name: 'Batata Inglesa cozida / assada',
+        amountG: 150,
+        measureLabel: '150g (~1 unidade média grande)',
+        calories: 78,
+        protein: 1.8,
+        carbs: 17.8,
+        fats: 0.1,
+        fiber: 1.9,
+        tip: 'Maior índice de saciedade per capita da tabela TACO devido ao alto teor de água.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-carb-09',
+        name: 'Quinoa em grãos cozida',
+        amountG: 90,
+        measureLabel: '90g (~3 colheres de sopa cheias)',
+        calories: 108,
+        protein: 3.9,
+        carbs: 19.2,
+        fats: 1.7,
+        fiber: 2.5,
+        tip: 'Pseudocereal completo com todos os 9 aminoácidos essenciais e ferro vegetal.',
+        portionMultiplier: 1
+      }
+    ]
+  },
+  {
+    id: 'grp-sub-proteinas-principais',
+    name: 'Carnes Magras & Proteínas de Refeições Principais',
+    category: 'Proteínas',
+    description: 'Equivalência para 100g de Peito de Frango Grelhado (~159 kcal, 32g proteína): trocar por filé de tilápia, patinho moído, lombo suíno ou salmão.',
+    referenceFood: {
+      foodId: 'food-prot-01',
+      name: 'Peito de Frango grelhado',
+      amountG: 100,
+      measureLabel: '100g (~1 filé médio)',
+      calories: 159,
+      protein: 32.0,
+      carbs: 0.0,
+      fats: 2.5
+    },
+    applicableKeywords: ['frango', 'tilapia', 'peixe', 'patinho', 'carne', 'lombo', 'salmao'],
+    createdAt: '2026-08-01T10:00:00.000Z',
+    updatedAt: '2026-09-11T10:00:00.000Z',
+    authorNutritionistName: 'Dr. Ricardo Silva',
+    substitutions: [
+      {
+        foodId: 'food-prot-05',
+        name: 'Filé de Tilápia grelhado',
+        amountG: 125,
+        measureLabel: '125g (~1 filé grande)',
+        calories: 160,
+        protein: 32.5,
+        carbs: 0.0,
+        fats: 3.3,
+        fiber: 0,
+        tip: 'Peixe branco de digestão muito rápida, ideal para refeições noturnas leves.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-prot-04',
+        name: 'Carne Bovina Patinho moído / bife',
+        amountG: 90,
+        measureLabel: '90g (~3 colheres de sopa cheias)',
+        calories: 197,
+        protein: 32.3,
+        carbs: 0.0,
+        fats: 6.6,
+        fiber: 0,
+        tip: 'Corte bovino magro riquíssimo em ferro heme biodisponível, creatina e vitamina B12.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-prot-08',
+        name: 'Lombo Suíno magro grelhado',
+        amountG: 95,
+        measureLabel: '95g (~1 bife médio)',
+        calories: 167,
+        protein: 30.5,
+        carbs: 0.0,
+        fats: 4.3,
+        fiber: 0,
+        tip: 'Corte suíno nobre com baixo teor lipídico e rica concentração de tiamina (B1).',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-prot-06',
+        name: 'Salmão fresco grelhado',
+        amountG: 85,
+        measureLabel: '85g (~1 posta pequena)',
+        calories: 179,
+        protein: 20.4,
+        carbs: 0.0,
+        fats: 10.5,
+        fiber: 0,
+        tip: 'Aporte fantástico de ômega-3 anti-inflamatório (EPA e DHA) e vitamina D3.',
+        portionMultiplier: 1
+      }
+    ]
+  },
+  {
+    id: 'grp-sub-paes-lanches',
+    name: 'Pães, Cereais & Tubérculos de Café / Lanche',
+    category: 'Carboidratos & Grãos',
+    description: 'Equivalência para 50g de Pão Francês (1 unidade, 150 kcal): trocar por pão integral, tapioca, aveia em flocos ou cuscuz nordestino.',
+    referenceFood: {
+      foodId: 'food-carb-10',
+      name: 'Pão Francês tradicional',
+      amountG: 50,
+      measureLabel: '1 unidade (50g)',
+      calories: 150,
+      protein: 4.0,
+      carbs: 29.3,
+      fats: 1.6
+    },
+    applicableKeywords: ['pao', 'tapioca', 'aveia', 'cuscuz', 'torrada'],
+    createdAt: '2026-08-01T10:00:00.000Z',
+    updatedAt: '2026-09-11T10:00:00.000Z',
+    authorNutritionistName: 'Dra. Marina Alencar',
+    substitutions: [
+      {
+        foodId: 'food-carb-03',
+        name: 'Pão de Forma 100% Integral',
+        amountG: 50,
+        measureLabel: '50g (~2 fatias)',
+        calories: 124,
+        protein: 5.0,
+        carbs: 22.5,
+        fats: 1.7,
+        fiber: 3.4,
+        tip: 'Grãos integrais que modulam o pico glicêmico matinal.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-carb-11',
+        name: 'Goma de Tapioca hidratada',
+        amountG: 50,
+        measureLabel: '50g (~2 colheres de sopa e meia)',
+        calories: 120,
+        protein: 0.0,
+        carbs: 30.0,
+        fats: 0.0,
+        fiber: 0.3,
+        tip: 'Opção naturalmente livre de glúten, excelente para pacientes com sensibilidade.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-carb-08',
+        name: 'Aveia em Flocos Finos',
+        amountG: 40,
+        measureLabel: '40g (~2 colheres de sopa cheias)',
+        calories: 157,
+        protein: 5.6,
+        carbs: 26.6,
+        fats: 3.3,
+        fiber: 4.1,
+        tip: 'Rica em betaglucanas solúveis que auxiliam no controle do colesterol LDL.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-carb-12',
+        name: 'Cuscuz de Milho cozido',
+        amountG: 100,
+        measureLabel: '100g (~4 colheres de sopa)',
+        calories: 113,
+        protein: 2.2,
+        carbs: 25.1,
+        fats: 0.7,
+        fiber: 1.8,
+        tip: 'Muito palatável, saciante e sem gordura adicionada.',
+        portionMultiplier: 1
+      }
+    ]
+  },
+  {
+    id: 'grp-sub-gorduras-oleaginosas',
+    name: 'Gorduras Saudáveis & Oleaginosas',
+    category: 'Gorduras & Castanhas',
+    description: 'Equivalência para 10g de Azeite de Oliva Extra Virgem (~88 kcal, 10g lipídios): trocar por abacate fresco, castanha-do-pará ou pasta de amendoim.',
+    referenceFood: {
+      foodId: 'food-fat-01',
+      name: 'Azeite de Oliva Extra Virgem',
+      amountG: 10,
+      measureLabel: '1 colher de sobremesa (10ml)',
+      calories: 88,
+      protein: 0.0,
+      carbs: 0.0,
+      fats: 10.0
+    },
+    applicableKeywords: ['azeite', 'abacate', 'castanha', 'amendoim', 'chia', 'linhaca'],
+    createdAt: '2026-08-01T10:00:00.000Z',
+    updatedAt: '2026-09-11T10:00:00.000Z',
+    authorNutritionistName: 'Dr. Felipe Rocha',
+    substitutions: [
+      {
+        foodId: 'food-fruit-04',
+        name: 'Abacate / Avocado fresco in natura',
+        amountG: 55,
+        measureLabel: '55g (~2 colheres de sopa cheias)',
+        calories: 88,
+        protein: 1.1,
+        carbs: 4.7,
+        fats: 8.0,
+        fiber: 3.5,
+        tip: 'Rico em ácidos graxos monoinsaturados (ácido oleico) e glutationa.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-fat-03',
+        name: 'Castanha-do-Pará (Castanha do Brasil)',
+        amountG: 13,
+        measureLabel: '13g (~3 unidades médias)',
+        calories: 85,
+        protein: 1.9,
+        carbs: 1.6,
+        fats: 8.2,
+        fiber: 1.0,
+        tip: 'Principal fonte alimentar natural de selênio do mundo, excelente para a tireoide.',
+        portionMultiplier: 1
+      },
+      {
+        foodId: 'food-fat-04',
+        name: 'Pasta de Amendoim Integral sem açúcar',
+        amountG: 15,
+        measureLabel: '15g (~1 colher de sobremesa)',
+        calories: 88,
+        protein: 4.3,
+        carbs: 3.0,
+        fats: 7.5,
+        fiber: 1.2,
+        tip: 'Gordura boa com aporte complementar de proteína vegetal e vitamina E.',
+        portionMultiplier: 1
+      }
+    ]
+  }
+];
